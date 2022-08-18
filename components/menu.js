@@ -9,6 +9,7 @@ import {
     Text,
 } from "@react-native-material/core";
 import {Image, StyleSheet} from "react-native";
+import {Icon} from "@rneui/base";
 
 const App = (props) => {
     const [isHungry, setIsHungry] = useState(true);
@@ -16,6 +17,7 @@ const App = (props) => {
 
     return (
         <>
+            <Icon name={'home'}></Icon>
 
             <Button
                 title="Boton de dialogo"
