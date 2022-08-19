@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StatusBar, SafeAreaView, ScrollView, StyleSheet} from 'react-native';
+import {View, StatusBar, SafeAreaView, ScrollView, StyleSheet, Alert} from 'react-native';
 import {Icon, Input} from '@rneui/themed';
 import {Button, Stack, Text} from "@react-native-material/core";
 
@@ -27,6 +27,7 @@ const Login = () => {
                         <Stack fill center spacing={4}>
                             <Button style={styles.button}
                                     title="Iniciar Sesión"
+                                    onPress={() => Alert.alert('Iniciando')}
                             />
                         </Stack>
                     </View>
