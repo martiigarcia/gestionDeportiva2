@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image, ScrollView, TextInput } from 'react-native';
 import Navigation from "./navigations/navigation";
+import 'react-native-gesture-handler';
 
 const App = () => {
     return (
