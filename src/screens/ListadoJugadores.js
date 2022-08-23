@@ -5,6 +5,7 @@ import {DataTable} from 'react-native-paper';
 
 import {StyleSheet, Text, View, SafeAreaView, SectionList, StatusBar, ScrollView} from "react-native";
 import {Cell, TableWrapper} from "react-native-table-component";
+import {isThenable} from "@babel/core/lib/gensync-utils/async";
 
 
 
@@ -50,7 +51,9 @@ const Item = ({title}) => (
         )}
     />
 </SafeAreaView>*/
-const ListadoJugadores = () => (
+export default function ListadoJugadores() {
+
+    return(
     <>
 
 
@@ -64,6 +67,9 @@ const ListadoJugadores = () => (
                         </DataTable.Header>
 
 
+
+
+
                         <DataTable.Row>
                             <DataTable.Cell>John</DataTable.Cell>
                             <DataTable.Cell>
@@ -71,6 +77,7 @@ const ListadoJugadores = () => (
                                 <Button style={styles.button} title="d"/>
                             </DataTable.Cell>
                         </DataTable.Row>
+
 
                         <DataTable.Row>
                             <DataTable.Cell>Bob</DataTable.Cell>
@@ -117,8 +124,8 @@ const ListadoJugadores = () => (
         </SafeAreaView>
 
 
-    </>
-);
+    </>)
+};
 
 
 const styles = StyleSheet.create({
@@ -153,7 +160,7 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ListadoJugadores;
+
 
 /*
 import React, { Component } from 'react';

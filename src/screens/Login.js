@@ -2,6 +2,8 @@ import React from 'react';
 import {View, StatusBar, SafeAreaView, ScrollView, StyleSheet, Alert} from 'react-native';
 import {Icon, Input} from '@rneui/themed';
 import {Button, Stack, Text} from "@react-native-material/core";
+import {createStackNavigator} from "@react-navigation/stack";
+import Menu from "./menu";
 
 const Login = () => {
 
@@ -22,6 +24,15 @@ const Login = () => {
                                errorStyle={{color: 'red'}}
                                errorMessage='La contraseña no coincide'
                         />
+                    </View>
+                    <View style={styles.view}>
+                        <Stack fill center spacing={4}>
+                            <Button style={styles.button}
+                                    variant={"text"}
+                                    title="¿Olvido su contraseña?"
+                                    onPress={() => Alert.alert('restableciendo...')}
+                            />
+                        </Stack>
                     </View>
                     <View style={styles.view}>
                         <Stack fill center spacing={4}>
@@ -64,7 +75,8 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         paddingBottom: 10,
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        textAlign: "center"
     }
 });
 

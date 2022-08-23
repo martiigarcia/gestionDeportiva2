@@ -2,21 +2,25 @@ import * as React from 'react';
 import {StatusBar, StyleSheet, Text, TouchableHighlight, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Login from "../components/Login";
 import {AppBar, HStack, IconButton} from "@react-native-material/core";
-import Menu from "../components/menu";
-import ListadoJugadores from "../components/ListadoJugadores";
-import Ionicons from "react-native-vector-icons/Ionicons";
-import CrearPlantilla from "../components/CrearPlantilla";
-import DetallePlantilla from "../components/DetallePlantilla";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+//import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import {createDrawerNavigator, DrawerContentScrollView, DrawerItem, DrawerItemList} from '@react-navigation/drawer';
 import StackNavigator from "@react-navigation/stack/src/navigators/createStackNavigator";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import Login from "../screens/Login";
+import Menu from "../screens/menu";
+import ListadoJugadores from "../screens/ListadoJugadores";
+import CrearPlantilla from "../screens/CrearPlantilla";
+import DetallePlantilla from "../screens/DetallePlantilla";
+import UserList from "../screens/UserList";
+import {Button, Icon} from "@rneui/themed";
+import UserForm from "../screens/UserForm";
+import {createStackNavigator} from "@react-navigation/stack";
 
-
-const Drawer = createDrawerNavigator();
-const Tab = createBottomTabNavigator(); //menu de abajo
-
+//const Drawer = createDrawerNavigator();
+//const Tab = createBottomTabNavigator(); //menu de abajo
+const Stack = createStackNavigator();
+/*
 function CustomDrawerContent(props)
 {
     return (
@@ -46,16 +50,54 @@ function MyDrawer()
     );
 }
 
-
-
-export default function Navigation()
-{
-    return (
-        <NavigationContainer>
+ <NavigationContainer>
             <MyDrawer/>
         </NavigationContainer>
+*/
+export default function StackNavigation()
+{
+    return (
+
+            <Stack.Navigator
+                initialRouteName="UserList"
+                screenOptions={screenOptions}>
+                <Stack.Screen
+                    name="UserList"
+                    component={UserList}
+                    options={({navigation})=>{
+                        return {
+                            title: "CRUD - Listado de Usuarios",
+                            headerRight: ()=> (
+                                <Button
+                                    onPress={()=> navigation.navigate("UserForm")}
+                                    type="clear"
+                                    icon={<Icon name="add" size={30} color="#fff"/>}/>
+                            )
+                        }
+                    }}/>
+
+                <Stack.Screen
+                    name="UserForm"
+                    component={UserForm}
+                    options={{
+                        title: "Formulario de Usuarios"
+                    }}/>
+            </Stack.Navigator>
+
+
     );
 }
+
+const screenOptions = {
+    headerStyle:{
+        backgroundColor: '#faf'
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle:{
+        fontWeight: 'bold'
+    }
+}
+
 
 
 /*
