@@ -8,6 +8,7 @@ import CrearPlantilla from "../screens/CrearPlantilla";
 import DetallePlantilla from "../screens/DetallePlantilla";
 import StackRoles from "./StackNavigationCrudRoles";
 import StackUsuarios from "./StackNavigationCrudUsuarios";
+import StackDeportes from "./StackNavigationCrudDeportes";
 
 const Drawer = createDrawerNavigator();
 function CustomDrawerContent(props)
@@ -36,6 +37,7 @@ function MyDrawer()
             <Drawer.Screen name="Crear Plantilla" component={CrearPlantilla}/>
             <Drawer.Screen name="Detalle Plantilla" component={DetallePlantilla}/>
             <Drawer.Screen name="Crud roles" component={StackRoles}/>
+            <Drawer.Screen name="Crud deportes" component={StackDeportes}/>
         </Drawer.Navigator>
     );
 }

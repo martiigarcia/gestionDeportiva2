@@ -3,20 +3,21 @@ import { Alert, FlatList} from 'react-native'
 import UsersContext from "./UserContext";
 import {Avatar, Button, ListItem, Icon} from "@rneui/themed";
 import RolContext from "./RolContext";
+import DeportesContext from "./DeporteContext";
 // import { Container } from './styles';
 
 export default props =>{
 
-    const {state, dispatch} = useContext(RolContext)
+    const {state, dispatch} = useContext(DeportesContext)
 
-    function confirmDeletion(rol){
-        Alert.alert('Eliminar rol', 'Seguro?', [
+    function confirmDeletion(deporte){
+        Alert.alert('Eliminar deporte', 'Seguro?', [
             {
                 text: 'Segurisimo',
                 onPress(){
                     dispatch({
                         type: 'deleteRol',
-                        payload: rol
+                        payload: deporte
                     })
                 }
             },
@@ -28,27 +29,27 @@ export default props =>{
     }
 
 
-    function getUserItem({item: rol}) {
+    function getUserItem({item: deporte}) {
         return (
 
             <ListItem
 
-                key={rol.id}
+                key={deporte.id}
                 bottomDivider
-                onPress={()=> props.navigation.navigate('RolForm', rol)}
+                onPress={()=> props.navigation.navigate('DeporteForm', deporte)}
             >
 
                 <ListItem.Content>
-                    <ListItem.Title>{rol.name}</ListItem.Title>
+                    <ListItem.Title>{deporte.name}</ListItem.Title>
 
                 </ListItem.Content>
                 <Button
-                    onPress={()=> props.navigation.navigate('RolForm', rol)}
+                    onPress={()=> props.navigation.navigate('DeporteForm', deporte)}
                     type="clear"
 
                     icon={<Icon name="edit" size={25} color="orange"/>}/>
                 <Button
-                    onPress={()=> confirmDeletion(rol)}
+                    onPress={()=> confirmDeletion(deporte)}
                     type="clear"
                     icon={<Icon name="delete" size={25} color="red"/>}/>
 
@@ -64,8 +65,8 @@ export default props =>{
     return (
 
         <FlatList
-            keyExtractor={rol => rol.id.toString()}
-            data={state.roles}
+            keyExtractor={deporte => deporte.id.toString()}
+            data={state.deportes}
             renderItem={getUserItem}
 
         />
