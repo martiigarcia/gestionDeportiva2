@@ -54,7 +54,7 @@ function MyDrawer()
             <MyDrawer/>
         </NavigationContainer>
 */
-export default function StackNavigation()
+export default function StackUsuarios()
 {
     return (
 

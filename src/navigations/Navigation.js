@@ -6,7 +6,8 @@ import Login from "../screens/Login";
 import Menu from "../screens/menu";
 import CrearPlantilla from "../screens/CrearPlantilla";
 import DetallePlantilla from "../screens/DetallePlantilla";
-import StackNavigation from "./StackNavigation";
+import StackRoles from "./StackNavigationCrudRoles";
+import StackUsuarios from "./StackNavigationCrudUsuarios";
 
 const Drawer = createDrawerNavigator();
 function CustomDrawerContent(props)
@@ -14,7 +15,7 @@ function CustomDrawerContent(props)
     return (
         <DrawerContentScrollView {...props}>
             <DrawerItemList {...props} />
-            <DrawerItem label="Help" onPress={() => alert('Link to help')}/>
+            <DrawerItem label="Help" onPress={() => alert('Helpinggggg')}/>
         </DrawerContentScrollView>
     );
 }
@@ -31,9 +32,10 @@ function MyDrawer()
 
             <Drawer.Screen name="Login" component={Login}/>
             <Drawer.Screen name="Menu" component={Menu}/>
-            <Drawer.Screen name="Listado Jugadores" component={StackNavigation}/>
+            <Drawer.Screen name="Crud jugadores" component={StackUsuarios}/>
             <Drawer.Screen name="Crear Plantilla" component={CrearPlantilla}/>
             <Drawer.Screen name="Detalle Plantilla" component={DetallePlantilla}/>
+            <Drawer.Screen name="Crud roles" component={StackRoles}/>
         </Drawer.Navigator>
     );
 }
