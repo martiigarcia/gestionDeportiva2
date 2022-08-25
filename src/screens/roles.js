@@ -1,4 +1,4 @@
-export default [
+export const rolesArchivo = [
     {
         id: 1,
         name: 'Administrador',

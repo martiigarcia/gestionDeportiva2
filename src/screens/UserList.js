@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Alert, FlatList} from 'react-native'
+import {Alert, FlatList, Text} from 'react-native'
 import UsersContext from "./UserContext";
 import {Avatar, Button, ListItem, Icon} from "@rneui/themed";
 // import { Container } from './styles';
@@ -39,10 +39,11 @@ export default props =>{
 
                 <Avatar source={{uri: user.avatarUrl}} />
 
+
                 <ListItem.Content>
                     <ListItem.Title>{user.name}</ListItem.Title>
                     <ListItem.Subtitle>{user.email}</ListItem.Subtitle>
-
+                    <ListItem.Subtitle>{user.rol}</ListItem.Subtitle>
                 </ListItem.Content>
                 <Button
                     onPress={()=> props.navigation.navigate('UserForm', user)}
