@@ -3,10 +3,10 @@ import React, {useContext, useState} from 'react';
 import {Text, View, TextInput, StyleSheet, SafeAreaView, ScrollView, StatusBar} from 'react-native'
 
 
-import UsersContext from "./UserContext";
+import UsersContext from "../contexts/UserContext";
 import {Button, Stack} from "@react-native-material/core";
 import {SafeAreaContext} from "react-native-safe-area-context";
-import RolesContext from "./RolContext";
+import RolesContext from "../contexts/RolContext";
 
 
 // import { Container } from './styles';

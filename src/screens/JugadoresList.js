@@ -1,15 +1,28 @@
-import React, { useContext } from 'react';
+import React, {useContext, useEffect,useState} from 'react';
 import {Alert, FlatList, Text} from 'react-native'
 import UsersContext from "../contexts/UserContext";
 import {Avatar, Button, ListItem, Icon} from "@rneui/themed";
-// import { Container } from './styles';
+
+
 
 export default props =>{
 
     const {state, dispatch} = useContext(UsersContext)
+    const [usuariosfiltrados, setUsuarioFiltrado]= useState([]);
+
+    useEffect(()=>{
+           if (state.users)
+               filtrarUsuario()
+        },[state]
+    )
+
+    const filtrarUsuario = () => {
+        setUsuarioFiltrado(state.users.filter(u => u.rol === "Jugador"));
+        console.log(usuariosfiltrados);
+    }
 
     function confirmDeletion(user){
-        Alert.alert('Eliminar usuario', 'Seguro?', [
+        Alert.alert('Eliminar jugador', 'Seguro?', [
             {
                 text: 'Segurisimo',
                 onPress(){
@@ -27,14 +40,14 @@ export default props =>{
     }
 
 
-    function getUserItem({item: user}) {
+    function getJugadorItem({item: user}) {
         return (
 
             <ListItem
 
                 key={user.id}
                 bottomDivider
-                onPress={()=> props.navigation.navigate('UserForm', user)}
+                //onPress={()=> props.navigation.navigate('UserForm', user)}
             >
 
                 <Avatar source={{uri: user.avatarUrl}} />
@@ -46,19 +59,22 @@ export default props =>{
                     <ListItem.Subtitle>{user.rol}</ListItem.Subtitle>
                 </ListItem.Content>
                 <Button
-                    onPress={()=> props.navigation.navigate('UserForm', user)}
-                    type="clear"
-
-                    icon={<Icon name="edit" size={25} color="orange"/>}/>
+                 //   onPress={()=> props.navigation.navigate('UserForm', user)}
+                    title="N"
+                    color={ "#ff4500"}
+                    />
                 <Button
-                    onPress={()=> confirmDeletion(user)}
-                    type="clear"
-                    icon={<Icon name="delete" size={25} color="red"/>}/>
-
+                  //  onPress={()=> confirmDeletion(user)}
+                    title="K"
+                    color={ "#32cd32"}
+                />
+                <Button
+                  //  onPress={()=> confirmDeletion(user)}
+                    title="D"
+                    color={ "#8a2be2"}
+                />
 
             </ListItem>
-
-
 
         )
     }
@@ -68,12 +84,11 @@ export default props =>{
 
         <FlatList
             keyExtractor={user => user.id.toString()}
-            data={state.users}
-            renderItem={getUserItem}
+            data={usuariosfiltrados}
+            renderItem={getJugadorItem}
 
         />
 
     )
-
 
 }

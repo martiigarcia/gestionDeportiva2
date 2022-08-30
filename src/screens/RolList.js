@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Alert, FlatList} from 'react-native'
-import UsersContext from "./UserContext";
+import UsersContext from "../contexts/UserContext";
 import {Avatar, Button, ListItem, Icon} from "@rneui/themed";
-import RolContext from "./RolContext";
+import RolContext from "../contexts/RolContext";
 // import { Container } from './styles';
 
 export default props =>{

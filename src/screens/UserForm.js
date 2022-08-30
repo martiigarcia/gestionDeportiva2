@@ -3,14 +3,12 @@ import React, {useContext, useEffect, useState} from 'react';
 import {Text, View, TextInput, StyleSheet, SafeAreaView, ScrollView, StatusBar} from 'react-native'
 
 
-import UsersContext from "./UserContext";
+import UsersContext from "../contexts/UserContext";
 import {Button, Stack} from "@react-native-material/core";
-import {SafeAreaContext} from "react-native-safe-area-context";
 import DatePicker from "react-native-date-picker";
 import moment from "moment";
-import ComboBox from 'react-native-combobox';
-import RolesContext from "./RolContext";
-import {rolesArchivo} from "./roles";
+import RolesContext from "../contexts/RolContext";
+import {rolesArchivo} from "../archivo/roles";
 import {Dropdown} from "react-native-element-dropdown";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
@@ -27,14 +25,6 @@ export default ({route, navigation}) => {
     const [value, setValue] = useState(null);
     const [isFocus, setIsFocus] = useState(false);
 
-    const [selectedValue, setSelectedValue] = useState('');
-    const values = [
-        'option 1',
-        'option 2',
-        'option 3',
-        'option 4',
-        'option 5'
-    ];
 
     useEffect(()=>{
         cargarRoles();
@@ -43,13 +33,8 @@ export default ({route, navigation}) => {
 
     const cargarRoles=()=>{
         setRol(rolesArchivo)
-        console.log(rol)
+
     }
-    const occupations = [
-        { label: 'Médico', value: '1' },
-        { label: 'Enfermero', value: '2' },
-        { label: 'Administrativo', value: '3' },
-    ];
 
     console.log(user);
 
@@ -106,7 +91,7 @@ export default ({route, navigation}) => {
                             placeholder="Completar"
                         />
                         <Text style={styles.text}>Fecha de nacimiento:</Text>
-                        <Button title="Seleccionar fecha" onPress={() => setOpen(true)} value={date}/>
+                        <Button variant={"outlined"} style={styles.buttonDate} title="Seleccionar fecha" onPress={() => setOpen(true)} value={date}/>
                         <DatePicker
                             modal
                             open={open}
@@ -124,6 +109,8 @@ export default ({route, navigation}) => {
 
                         <Text style={styles.text}>Rol en el sistema:</Text>
                         {renderLabel()}
+
+
                         <Dropdown
                             style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
                             placeholderStyle={styles.placeholderStyle}
@@ -135,8 +122,8 @@ export default ({route, navigation}) => {
                             maxHeight={300}
                             labelField="name"
                             valueField="id"
-                            placeholder={!isFocus ? 'Select item' : '...'}
-                            searchPlaceholder="Search..."
+                            placeholder={!isFocus ? 'Seleccionar rol' : '...'}
+                            searchPlaceholder="Buscar por nombre"
                             onFocus={() => setIsFocus(true)}
                             onBlur={() => setIsFocus(false)}
                             onChange={item => {
@@ -153,12 +140,6 @@ export default ({route, navigation}) => {
                             )}
                         />
 
-                        <TextInput
-                            style={styles.input}
-                            placeholder="Combo box de roles"
-                            value={user.rol}
-                            onChangeText={rol => setUser({...user, rol})}
-                        />
 
                         <Text style={styles.text}>Avatar:</Text>
 
@@ -230,9 +211,10 @@ const styles = StyleSheet.create({
     dropdown: {
         height: 50,
         borderColor: 'gray',
-        borderWidth: 0.5,
-        borderRadius: 8,
-        paddingHorizontal: 8,
+        borderWidth: 1,
+        margin: 10,
+        marginBottom: 10, padding: 10,
+
     },
     icon: {
         marginRight: 5,
@@ -260,5 +242,17 @@ const styles = StyleSheet.create({
         height: 40,
         fontSize: 16,
     },
+    buttonDate:{
+        height: 50,
+        borderWidth: 1,
+        margin: 10,
+        marginBottom: 10, padding: 10,
+        borderColor: 'gray',
+        paddingTop: 10,
+        paddingBottom: 10,
+        justifyContent: "center",
+        alignItems: "center",
+        textAlign: "center"
+    }
 });
 
